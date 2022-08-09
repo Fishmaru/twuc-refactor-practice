@@ -30,11 +30,7 @@ public class OrderReceipt {
 			output.append('\n');
 		}
 
-		double totalSalesTax = 0d;
-		for (LineItem lineItem : order.getLineItems()) {
-			double salesTax = lineItem.totalAmount() * .10;
-			totalSalesTax += salesTax;
-		}
+		double totalSalesTax = getTotalSalesTax();
 
 		double totalAmount = 0d;
 		for (LineItem lineItem : order.getLineItems()) {
@@ -47,6 +43,15 @@ public class OrderReceipt {
 
 		output.append("Total Amount").append('\t').append(totalAmount);
 		return output.toString();
+	}
+
+	private double getTotalSalesTax() {
+		double totalSalesTax = 0d;
+		for (LineItem lineItem : order.getLineItems()) {
+			double salesTax = lineItem.totalAmount() * .10;
+			totalSalesTax += salesTax;
+		}
+		return totalSalesTax;
 	}
 
 	private void printHeader(StringBuilder output) {
