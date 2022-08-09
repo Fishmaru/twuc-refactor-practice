@@ -8,7 +8,9 @@ package com.twu.refactoring;
  * 
  */
 public class OrderReceipt {
-    private final Order order;
+	public static final String SALES_TAX = "Sales Tax";
+	public static final String TOTAL_AMOUNT = "Total Amount";
+	private final Order order;
 
     public OrderReceipt(Order order) {
         this.order = order;
@@ -38,8 +40,8 @@ public class OrderReceipt {
 			output.append(lineItem.totalAmount());
 			output.append('\n');
 
-			output.append("Sales Tax").append('\t').append(totalSalesTax);
-			output.append("Total Amount").append('\t').append(totalAmount);
+			output.append(SALES_TAX).append('\t').append(totalSalesTax);
+			output.append(TOTAL_AMOUNT).append('\t').append(totalAmount);
 		}
 	}
 
